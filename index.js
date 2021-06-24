@@ -3,16 +3,21 @@ function jema () {
     this.items = [];
     this.actions = {};
 
-    if (!this.called) { this.called = true; }
+    if (!this.called) {
+        document.getElementById('body').addEventListener('click', function (e) {
+            console.log('clicked', e.target);
+        });
+        this.called = true;
+    }
 }
 
 jema.prototype.fire = function (obj) {
     console.log(this.called)
 }
 
-let lema = new jema();
-
 document.addEventListener("DOMContentLoaded", function(event) {
+    let lema = new jema();
+
     lema.fire({
         'name':'kb', 'event':'click', 'action': function () {
             console.log('clicked');
