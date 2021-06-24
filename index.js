@@ -23,8 +23,8 @@ jema.prototype.checkForAction = function (dts) {
     let {type, target} = dts;
     let id = target.id;
 
-    if (this.items.includes(id)&& this.actions[id].type === type) {
-        console.log('e dey inside');
+    if (this.items.includes(id) && this.actions[id].type === type) {
+        this.actions[id].action(target);
     }
 }
 
@@ -32,14 +32,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let lema = new jema();
 
     lema.fire({
-        'name':'kb', 'type':'click', 'action': function () {
-            console.log('kb is on fire');
+        'name':'kb', 'type':'click', 'action': function (event) {
+            console.log(event, 'kb is on fire');
         }
     });
 
     lema.fire({
-        'name':'jd', 'type':'click', 'action': function () {
-            console.log('jd is on fire');
+        'name':'jd', 'type':'click', 'action': function (event) {
+            console.log(event, 'jd is the man');
         }
     });
 
