@@ -1,21 +1,25 @@
-function jema (obj) {
+function jema () {
     this.called = false;
     this.items = [];
     this.actions = {};
 
-    if (!this.called) {
-        console.log('now add event listner to the body tag');
-    }
+    if (!this.called) { this.called = true; }
 }
 
+jema.prototype.fire = function (obj) {
+    console.log(this.called)
+}
+
+let lema = new jema();
+
 document.addEventListener("DOMContentLoaded", function(event) {
-    jema({
+    lema.fire({
         'name':'kb', 'event':'click', 'action': function () {
             console.log('clicked');
         }
     });
 
-    jema({
+    lema.fire({
         'name':'jd', 'event':'click', 'action': function () {
             console.log('clicked');
         }
